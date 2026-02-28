@@ -95,6 +95,12 @@
                 </div>
 
                 <button type="submit" class="btn btn-custom w-100 text-white fw-bold mb-4">Masuk</button>
+                @if (session('status'))
+                <div class="alert alert-success alert-dismissible fade show" role="alert" style="font-size: 0.85rem;">
+                    {{ session('status') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endif
 
                 <div class="text-center" style="font-size: 0.9rem;">
                     <span class="text-secondary">Belum punya akun?</span> 
