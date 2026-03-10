@@ -10,14 +10,28 @@
         </button>
         
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0 mt-3 mt-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active fw-semibold" aria-current="page" href="#">Katalog Alat</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Status & Riwayat</a>
-                </li>
-            </ul>
+           <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4 gap-2">
+            <li class="nav-item">
+                <a class="nav-link px-3 {{ request()->routeIs('dashboard') ? 'fw-bold text-theme border-bottom border-3 border-primary' : 'text-secondary' }}" 
+                href="{{ route('dashboard') }}">
+                Katalog Alat
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link px-3 {{ request()->routeIs('status.peminjaman') ? 'fw-bold text-theme border-bottom border-3 border-primary' : 'text-secondary' }}" 
+                href="{{ route('status.peminjaman') }}">
+                Status Peminjaman
+                </a>
+            </li>
+            
+            <li class="nav-item">
+                <a class="nav-link px-3 {{ request()->routeIs('riwayat.peminjaman') ? 'fw-bold text-theme border-bottom border-3 border-primary' : 'text-secondary' }}" 
+                href="{{ route('riwayat.peminjaman') }}">
+                Riwayat Peminjaman
+                </a>
+            </li>
+        </ul>
             
             <ul class="navbar-nav ms-auto align-items-lg-center">
                 <li class="nav-item dropdown">
@@ -32,7 +46,7 @@
                     
                     <ul class="dropdown-menu dropdown-menu-end border-0 shadow mt-3 rounded-3" aria-labelledby="profileDropdown">
                         <li>
-                            <a class="dropdown-item py-2 d-flex align-items-center" href="#">
+                            <a class="dropdown-item py-2 d-flex align-items-center" href="{{ route('profil.edit') }}">
                                 <i class="bi bi-person-circle me-2 text-secondary"></i> Profil Saya
                             </a>
                         </li>
@@ -60,5 +74,12 @@
     .dropdown-item.text-danger:hover {
         background-color: #fee2e2; /* Merah muda transparan */
         color: #dc3545 !important;
+    }
+    /* Memberikan efek hover pada menu navbar */
+    .navbar-nav .nav-link {
+        transition: color 0.2s ease-in-out;
+    }
+    .navbar-nav .nav-link:hover {
+        color: #172a53 !important;
     }
 </style>

@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->id();
-            // Relasi ke tabel users (siapa yang pinjam)
-            $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            // Relasi ke tabel items (barang apa yang dipinjam)
-            $table->foreignId('item_id')->constrained('items')->cascadeOnDelete();
+            // Relasi ke users
+            $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
+            // Relasi ke items
+            $table->foreignId('item_id')->constrained('items')->onDelete('cascade');
             
+            $table->integer('jumlah'); // <-- Ini kolom jumlahnya
             $table->date('tgl_pinjam');
-            $table->date('tgl_kembali')->nullable(); // Boleh kosong kalau belum dikembalikan
-            $table->enum('status', ['pending', 'dipinjam', 'dikembalikan'])->default('pending');
+            $table->date('tgl_kembali');
+            $table->string('status')->default('Pending');
             $table->timestamps();
         });
     }

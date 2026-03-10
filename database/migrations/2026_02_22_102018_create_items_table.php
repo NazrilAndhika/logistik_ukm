@@ -13,10 +13,12 @@ return new class extends Migration
     {
         Schema::create('items', function (Blueprint $table) {
             $table->id();
-            $table->string('nama_barang'); // Contoh: Raket Yonex, Shuttlecock
-            $table->integer('stok');       // Jumlah barang
-            $table->string('kondisi');     // Contoh: Baik, Rusak Ringan
+            $table->string('nama_barang');
+            $table->integer('stok');
+            $table->string('kondisi')->default('Baik');
+            $table->string('foto')->nullable(); // <-- TAMBAHKAN BARIS INI
             $table->timestamps();
+            
         });
     }
 

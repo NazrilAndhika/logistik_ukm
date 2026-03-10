@@ -7,16 +7,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #f8f9fa; /* Latar belakang abu-abu terang */
-            min-height: 100vh; /* Menggunakan min-height agar aman jika formnya panjang */
+            background-color: #f8f9fa; 
+            min-height: 100vh; 
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 30px 0; /* Tambahan padding atas bawah */
+            padding: 30px 0; 
         }
         .login-wrapper {
             width: 100%;
-            max-width: 450px; /* Sedikit lebih lebar dari login karena fieldnya banyak */
+            max-width: 450px; 
         }
         .logo-container {
             text-align: center;
@@ -78,6 +78,22 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" name="email" value="{{ old('email') }}" required placeholder="email@contoh.com">
                     @error('email')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="prodi" class="form-label">Program Studi</label>
+                    <input type="text" class="form-control @error('prodi') is-invalid @enderror" id="prodi" name="prodi" value="{{ old('prodi') }}" required placeholder="Contoh: Teknik Informatika">
+                    @error('prodi')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label for="kelas" class="form-label">Kelas / Tingkat</label>
+                    <input type="text" class="form-control @error('kelas') is-invalid @enderror" id="kelas" name="kelas" value="{{ old('kelas') }}" required placeholder="Contoh: 2A">
+                    @error('kelas')
                         <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
                 </div>
